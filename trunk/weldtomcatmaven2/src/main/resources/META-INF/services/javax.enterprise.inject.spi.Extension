@@ -1,1 +1,1 @@
-org.seamframework.persistence.PersistenceContextExtension
+br.com.tomcat.weld.PersistenceContextExtension
