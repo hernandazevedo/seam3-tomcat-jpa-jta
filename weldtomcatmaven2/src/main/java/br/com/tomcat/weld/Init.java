@@ -5,8 +5,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 
 /**
  * User: rossmyt
@@ -21,15 +20,15 @@ public class Init implements Serializable
 	 * 
 	 */
 	private static final long serialVersionUID = -5815051339599823733L;
-//	@Produces
-//    @ApplicationScoped
-//    @PersistenceContext(unitName = "foo")
+	@Produces
+    @ApplicationScoped
+    @PersistenceContext(unitName = "foo")
     EntityManager em;
 	
-	public @Produces  @ApplicationScoped EntityManager retrieveEntityManager() {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("foo");
-		EntityManager em = emf.createEntityManager();
-		
-      return em;
-    }
+//	public @Produces  @ApplicationScoped EntityManager retrieveEntityManager() {
+//		EntityManagerFactory emf = Persistence.createEntityManagerFactory("foo");
+//		EntityManager em = emf.createEntityManager();
+//		
+//      return em;
+//    }
 }
