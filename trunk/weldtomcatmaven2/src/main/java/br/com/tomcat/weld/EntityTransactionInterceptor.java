@@ -7,8 +7,6 @@ import javax.interceptor.AroundInvoke;
 import javax.interceptor.Interceptor;
 import javax.interceptor.InvocationContext;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 /**
  * Declarative JPA EntityTransactions
@@ -20,7 +18,11 @@ import javax.persistence.Persistence;
 public class EntityTransactionInterceptor  implements Serializable
 {
 
-    private
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private
     @Inject
     @Any
     EntityManager em;
@@ -29,28 +31,8 @@ public class EntityTransactionInterceptor  implements Serializable
     public Object aroundInvoke(InvocationContext ic) throws Exception
     {
     	
-//    	EntityManagerFactory emf = Persistence.createEntityManagerFactory("foo");
-//		EntityManager em = emf.createEntityManager();
-//		
-//		em.getTransaction().begin();
-//		Book b = new Book();
-//		b.setId(1L);
-//		b.setAuthor("xxx");
-//		b.setName("dsda");
-//		em.persist(b);
-//		em.flush();
-////		em.getTransaction().commit();
-//		
-////		em.close();
-////		emf.close();			
-//    	
-    	boolean act = false;
-        
-    	try{
-    		act = !em.getTransaction().isActive();
-    	}catch (Exception e) {
-    		e.printStackTrace();
-		}
+    	boolean act = !em.getTransaction().isActive();
+    	
     	
     	
         if (act)
@@ -59,6 +41,7 @@ public class EntityTransactionInterceptor  implements Serializable
         }
         try
         {
+        	
             Object result = ic.proceed();
             if (act)
             {

@@ -14,14 +14,15 @@ import javax.persistence.EntityManager;
 
 public class BookFactory implements Serializable
 {
-    private final String text1 = "Write your book in a sec!";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private final String text1 = "Write your book in a sec!";
     private final String text2 = "List of written books";
 
     @Inject
     EntityManager em;
-
-    
-//    @Inject @RepositoryManager EntityManager em;
 
     private Book book = new Book();
     List<Book> books = new ArrayList<Book>();
