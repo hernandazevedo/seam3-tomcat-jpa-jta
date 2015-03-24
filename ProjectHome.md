@@ -1,0 +1,1 @@
+seam3-tomcat-jpa-jta
